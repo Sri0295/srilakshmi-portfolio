@@ -4,7 +4,7 @@ import { gsap, useGSAP } from '../../lib/gsap'
 import { prefersReducedMotion } from '../../hooks/useReducedMotion'
 import { profile } from '../../data/profile'
 import { site } from '../../data/site'
-import { skillCategories } from '../../data/skills'
+import { skillGroups } from '../../data/skills'
 import { projects } from '../../data/projects'
 import { education } from '../../data/education'
 import { certifications } from '../../data/certifications'
@@ -15,7 +15,7 @@ interface Props {
   onOpenProject: (slug: string) => void
 }
 
-const primaryEducation = education.find((e) => e.primary)!
+const primaryEducation = education[0]
 const publishedExperience = experience.filter((e) => e.publish)
 
 /**
@@ -39,7 +39,7 @@ export default function RecruiterView({ onClose, onOpenProject }: Props) {
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  const coreSkills = Array.from(new Set(skillCategories.flatMap((c) => c.skills)))
+  const coreSkills = Array.from(new Set(skillGroups.flatMap((c) => c.skills)))
 
   return (
     <div
@@ -53,19 +53,15 @@ export default function RecruiterView({ onClose, onOpenProject }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Recruiter quick view"
-        className="card mx-auto my-auto w-full max-w-2xl !bg-bg-deep p-7 shadow-2xl shadow-brand/25 sm:p-9"
+        className="card mx-auto my-auto w-full max-w-2xl p-7 sm:p-9"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-4">
-            <img
-              src={profile.photo.avatar}
-              alt={profile.photo.alt}
-              width={64}
-              height={64}
-              className="h-16 w-16 rounded-2xl border border-line object-cover"
-            />
+            <span className="grid h-16 w-16 place-items-center rounded-2xl border border-line bg-surface-2 font-display text-xl font-bold text-coral">
+              SS
+            </span>
             <div>
               <h2 className="font-display text-2xl font-bold tracking-tight">{profile.name}</h2>
               <p className="mt-0.5 font-mono text-xs tracking-[0.18em] text-aqua uppercase">
@@ -185,7 +181,6 @@ export default function RecruiterView({ onClose, onOpenProject }: Props) {
               type="button"
               onClick={() => window.print()}
               className="btn btn-ghost !px-4 !py-2.5 text-sm"
-              data-cursor="Print"
             >
               <Printer size={14} aria-hidden="true" /> Print
             </button>

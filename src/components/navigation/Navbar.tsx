@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { Briefcase, Command, Flame, Mail, Menu, Sparkles, X } from 'lucide-react'
+import { Briefcase, Command, Mail, Menu, X } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '../ui/BrandIcons'
 import { gsap, useGSAP } from '../../lib/gsap'
 import { getLenis, scrollToId } from '../../lib/scroll'
-import { useMagnetic } from '../../hooks/useMagnetic'
 import { SECTION_IDS } from '../../hooks/useActiveSection'
 import { profile } from '../../data/profile'
 
@@ -15,27 +14,20 @@ const NAV_LINKS = [
   { id: 'contact', label: 'Contact' },
 ]
 
-export type ThemeName = 'aurora' | 'ember'
-
 interface NavbarProps {
   active: string
-  theme: ThemeName
-  onToggleTheme: () => void
   onOpenPalette: () => void
   onOpenRecruiter: () => void
 }
 
 export default function Navbar({
   active,
-  theme,
-  onToggleTheme,
   onOpenPalette,
   onOpenRecruiter,
 }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const overlayRef = useRef<HTMLDivElement>(null)
-  const hireRef = useMagnetic<HTMLButtonElement>(0.25)
 
   const activeNum = String(Math.max(1, SECTION_IDS.indexOf(active as (typeof SECTION_IDS)[number]) + 1)).padStart(2, '0')
 
@@ -122,7 +114,6 @@ export default function Navbar({
             href="#hero"
             onClick={(e) => jump(e, 'hero')}
             className="group flex items-center gap-3"
-            data-cursor="Top"
             aria-label="Srilakshmi S — back to top"
           >
             <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface font-display text-lg font-bold transition-transform duration-300 group-hover:rotate-[-6deg]">
@@ -174,7 +165,6 @@ export default function Navbar({
               onClick={onOpenPalette}
               className="hidden items-center gap-2 rounded-full border border-line px-3 py-2 font-mono text-[0.7rem] text-muted transition-colors hover:border-aqua hover:text-aqua xl:flex"
               aria-label="Open command palette (Ctrl+K)"
-              data-cursor="Ctrl + K"
             >
               <Command size={13} aria-hidden="true" /> Ctrl K
             </button>
@@ -182,25 +172,13 @@ export default function Navbar({
               type="button"
               onClick={onOpenRecruiter}
               className="hidden items-center gap-2 rounded-full border border-line px-3.5 py-2 font-mono text-[0.7rem] tracking-wider text-muted uppercase transition-colors hover:border-coral hover:text-coral lg:flex"
-              data-cursor="Quick view"
             >
               <Briefcase size={13} aria-hidden="true" /> Recruiter view
             </button>
             <button
               type="button"
-              onClick={onToggleTheme}
-              className="grid h-10 w-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-lime hover:text-lime"
-              aria-label={`Switch to the ${theme === 'aurora' ? 'Ember' : 'Aurora'} theme`}
-              data-cursor="Theme"
-            >
-              {theme === 'aurora' ? <Sparkles size={16} aria-hidden="true" /> : <Flame size={16} aria-hidden="true" />}
-            </button>
-            <button
-              ref={hireRef}
-              type="button"
               onClick={() => go('contact')}
               className="btn btn-primary hidden !px-5 !py-2.5 text-sm lg:inline-flex"
-              data-cursor="Let's talk"
             >
               Hire Me
             </button>

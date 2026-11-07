@@ -25,7 +25,7 @@ interface TimelineItem {
   projectSlug?: string
 }
 
-const primary = education.find((e) => e.primary)!
+const primary = education[0]
 
 /** Large timeline marker: just the year for experience spans. */
 const yearOf = (period: string) => period.match(/20\d{2}/)?.[0] ?? period
@@ -66,8 +66,8 @@ function buildItems(): TimelineItem[] {
 }
 
 const DOT: Record<Accent, string> = {
-  brand: 'bg-brand shadow-brand/50',
-  coral: 'bg-coral shadow-coral/50',
+  brand: 'bg-coral shadow-coral/40',
+  coral: 'bg-coral shadow-coral/40',
 }
 
 /** Career timeline — published experience + education. */
@@ -128,7 +128,7 @@ export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: str
                     <div className="card mt-4 p-6 transition-transform duration-300 group-hover:-translate-y-0.5 md:p-7">
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                         {item.icon === 'education' ? (
-                          <GraduationCap size={17} className="text-brand" aria-hidden="true" />
+                          <GraduationCap size={17} className="text-coral" aria-hidden="true" />
                         ) : (
                           <Briefcase size={16} className="text-coral" aria-hidden="true" />
                         )}
@@ -174,7 +174,6 @@ export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: str
                               target="_blank"
                               rel="noreferrer"
                               className="btn btn-ghost !px-5 !py-2.5 text-sm"
-                              data-cursor="GitHub"
                               aria-label={`${item.title} project repository on GitHub`}
                             >
                               <GithubIcon size={15} /> GitHub
@@ -185,7 +184,6 @@ export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: str
                               type="button"
                               onClick={() => onOpenProject(item.projectSlug!)}
                               className="btn btn-primary !px-5 !py-2.5 text-sm"
-                              data-cursor="Open case study"
                               aria-label="View the internship project case study"
                             >
                               View Internship Project <ArrowUpRight size={14} aria-hidden="true" />

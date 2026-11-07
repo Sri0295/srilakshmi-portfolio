@@ -9,11 +9,11 @@ interface PreloaderProps {
 }
 
 const CURTAIN_COLORS = [
-  'var(--brand)',
-  'var(--coral)',
-  'var(--aqua)',
-  'var(--lime)',
-  'var(--peach)',
+  '#F6DCE3',
+  '#D895A7',
+  '#FBECEF',
+  '#AD647C',
+  '#EAD9DF',
 ]
 
 /**

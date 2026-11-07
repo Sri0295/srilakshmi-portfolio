@@ -104,7 +104,6 @@ export default function CaseStudyOverlay({ slug, onClose, onNavigate }: Props) {
             onClick={requestClose}
             className="grid h-10 w-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-coral hover:text-coral"
             aria-label="Close case study"
-            data-cursor="Close"
           >
             <X size={17} aria-hidden="true" />
           </button>
@@ -125,12 +124,12 @@ export default function CaseStudyOverlay({ slug, onClose, onNavigate }: Props) {
 
         <div className="cs-reveal mt-8 flex flex-wrap gap-3">
           {project.github && (
-            <a href={project.github} target="_blank" rel="noreferrer" className="btn btn-ghost !px-5 !py-2.5 text-sm" data-cursor="GitHub">
+            <a href={project.github} target="_blank" rel="noreferrer" className="btn btn-ghost !px-5 !py-2.5 text-sm">
               <GithubIcon size={15} /> Source code
             </a>
           )}
           {project.demo && (
-            <a href={project.demo} target="_blank" rel="noreferrer" className="btn btn-ghost !px-5 !py-2.5 text-sm" data-cursor="Live demo" title={project.demoNote}>
+            <a href={project.demo} target="_blank" rel="noreferrer" className="btn btn-ghost !px-5 !py-2.5 text-sm" title={project.demoNote}>
               <ExternalLink size={15} aria-hidden="true" /> Live demo
             </a>
           )}

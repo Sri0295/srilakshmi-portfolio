@@ -1,5 +1,14 @@
 # CONTENT AUDIT — Srilakshmi S Portfolio
 
+> **Redesign (Nov 7, 2026):** the visual identity changed from dark vibrant violet to **soft
+> pink editorial minimalism** (single light theme, no dark toggle). Removed: custom cursor,
+> moving tech marquee, skill constellation, grid easter egg, the second profile photo, floating
+> tech labels, the outlined “S.”, and the HSC/SSLC school history. Added: certificate gallery
+> with the four owner-supplied PDFs (dates + verification links as printed), the new profile
+> photograph (`public/images/profile/srilakshmi-profile.jpg`), and the corrected hero name
+> (SRILAKSHMI only). All functional systems (palette, recruiter view, case studies, Formspree)
+> were preserved and re-verified after the redesign.
+
 Built from two supplied résumés:
 
 | Source | File | Character |

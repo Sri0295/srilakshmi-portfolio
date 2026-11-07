@@ -1,5 +1,5 @@
 /* ==========================================================================
-   GLOBAL BASE + SHARED PRIMITIVES
+   GLOBAL BASE + SHARED PRIMITIVES — soft pink editorial minimalism.
    Content is visible by default: initial hidden states are applied by GSAP
    only when JS is running with motion enabled — never via CSS.
    ========================================================================== */
@@ -28,27 +28,26 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
-  transition: background-color 0.5s ease;
 }
 
 ::selection {
-  background: var(--brand);
+  background: var(--coral);
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--aqua);
+  outline: 2px solid var(--coral);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 /* Slim, on-brand scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-track { background: var(--surface-2); }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--brand), var(--coral));
+  background: var(--brand);
   border-radius: 8px;
-  border: 2px solid var(--bg-deep);
+  border: 2px solid var(--surface-2);
 }
 
 /* ------------------------------------------------------------------ */
@@ -70,45 +69,11 @@ section[id] {
   padding-block: clamp(5rem, 11vh, 8.5rem);
 }
 
-.section-light {
-  background: var(--light-surface);
-  color: var(--light-ink);
-  --ink: var(--light-ink);
-  --ink-muted: rgba(34, 28, 63, 0.72);
-  --ink-faint: rgba(34, 28, 63, 0.5);
-  --line: rgba(34, 28, 63, 0.16);
-  --brand: #6a3df0;
-  --brand-soft: rgba(106, 61, 240, 0.12);
-  --coral: #e64c72;
-  --aqua: #0e9488;
-  --lime: #7d9a12;
-  --peach: #d97e3f;
-  --lavender: #5b46b0;
-}
-
-/* Soft-ivory variant (Education) */
-.section-ivory {
-  background: #f5f0ff;
-  color: var(--light-ink);
-  --ink: var(--light-ink);
-  --ink-muted: rgba(34, 28, 63, 0.72);
-  --ink-faint: rgba(34, 28, 63, 0.5);
-  --line: rgba(34, 28, 63, 0.14);
-  --brand: #6a3df0;
-  --brand-soft: rgba(106, 61, 240, 0.12);
-  --coral: #e64c72;
-  --aqua: #0e9488;
-  --lime: #7d9a12;
-  --peach: #d97e3f;
-  --lavender: #5b46b0;
-}
-
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    var(--lavender) 0%,
-    var(--brand) 34%,
-    var(--coral) 68%,
+    var(--brand) 0%,
+    var(--coral) 55%,
     var(--peach) 100%
   );
   background-size: 200% 100%;
@@ -118,10 +83,8 @@ section[id] {
 }
 
 /*
- * Per-character gradient type. The wrapper-level background-clip:text trick
- * breaks when the animated characters form their own composited layers
- * (transform / will-change), so each character clips its own gradient.
- * Chars shimmer via a background-position pan (disabled for reduced motion).
+ * Per-character gradient type. Each character clips its own gradient so the
+ * animated transforms can never break background-clip: text.
  */
 .grad-chars {
   color: transparent;
@@ -129,9 +92,8 @@ section[id] {
 .grad-chars .ss-char {
   background-image: linear-gradient(
     115deg,
-    var(--lavender) 0%,
-    var(--brand) 38%,
-    var(--coral) 72%,
+    var(--brand) 0%,
+    var(--coral) 55%,
     var(--peach) 100%
   );
   background-size: 260% 100%;
@@ -152,17 +114,17 @@ section[id] {
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--ink-muted);
+  -webkit-text-stroke: 1.5px var(--brand);
 }
 
-/* Large typographic word that fills with brand colour on hover */
+/* Large typographic word that fills with deep rose on hover */
 .outline-word {
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--ink-muted);
+  -webkit-text-stroke: 1.5px var(--brand);
   transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
 }
 .outline-word:hover {
-  color: var(--brand);
+  color: var(--coral);
   -webkit-text-stroke-color: transparent;
 }
 
@@ -174,7 +136,7 @@ section[id] {
   font-size: var(--fs-meta);
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--aqua);
+  color: var(--coral);
 }
 .eyebrow::before {
   content: '';
@@ -190,6 +152,7 @@ section[id] {
   padding: 0.36em 0.95em;
   border: 1px solid var(--line);
   border-radius: 999px;
+  background: var(--surface);
   font-family: var(--ff-mono);
   font-size: var(--fs-meta);
   letter-spacing: 0.06em;
@@ -214,33 +177,29 @@ section[id] {
     background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 .btn-primary {
-  background: linear-gradient(120deg, var(--brand), var(--coral));
+  background: var(--coral);
   color: #fff;
-  box-shadow: 0 10px 34px -12px var(--brand);
+  box-shadow: 0 14px 30px -16px rgba(173, 100, 124, 0.6);
 }
 .btn-primary:hover {
-  box-shadow: 0 16px 44px -10px var(--coral);
+  background: #96566c;
+  box-shadow: 0 18px 38px -16px rgba(173, 100, 124, 0.65);
 }
 .btn-ghost {
   border: 1px solid var(--line);
   color: var(--ink);
-  background: transparent;
+  background: var(--surface);
 }
 .btn-ghost:hover {
-  border-color: var(--aqua);
-  color: var(--aqua);
+  border-color: var(--coral);
+  color: var(--coral);
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
-}
-
-/* Cards on the light sections read as translucent white */
-.section-light .card,
-.section-ivory .card {
-  background: rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-card);
 }
 
 /* Skip link (a11y) */
@@ -251,8 +210,8 @@ section[id] {
   z-index: 200;
   padding: 0.7em 1.2em;
   border-radius: 999px;
-  background: var(--aqua);
-  color: #0c1a18;
+  background: var(--coral);
+  color: #fff;
   font-weight: 600;
   transform: translateY(-300%);
   transition: transform 0.2s ease;
@@ -261,40 +220,7 @@ section[id] {
   transform: translateY(0);
 }
 
-/* Easter-egg 12-column design grid */
-.grid-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 150;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.25rem;
-  width: min(100% - 3rem, var(--container));
-  margin-inline: auto;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.grid-overlay.on { opacity: 1; }
-.grid-overlay > span {
-  background: rgba(72, 220, 207, 0.07);
-  border-inline: 1px solid rgba(72, 220, 207, 0.22);
-}
-@media (max-width: 768px) {
-  .grid-overlay { grid-template-columns: repeat(4, 1fr); }
-  .grid-overlay > span:nth-child(n + 5) { display: none; }
-}
-
-/* Faint blueprint grid used behind hero/contact */
-.bg-blueprint {
-  background-image: linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(ellipse 85% 75% at 50% 38%, black 25%, transparent 78%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 38%, black 25%, transparent 78%);
-}
-
-/* Print: force all scroll-reveal content visible (e.g. Recruiter View printing) */
+/* Print: force all scroll-reveal content visible */
 @media print {
   *,
   *::before,
@@ -305,15 +231,6 @@ section[id] {
     animation: none !important;
     transition: none !important;
   }
-  .custom-cursor,
-  .grid-overlay {
-    display: none !important;
-  }
-}
-
-/* Custom cursor is desktop-only */
-@media (hover: none), (pointer: coarse) {
-  .custom-cursor { display: none !important; }
 }
 
 /* Reduced motion: neutralise CSS animation */

@@ -1,8 +1,8 @@
 # Srilakshmi S — Developer Portfolio
 
-A vibrant, cinematic, single-page developer portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**, animated with **GSAP + ScrollTrigger + Lenis**, featuring a strict **content-verification system** so nothing unverified is ever published as fact.
+A soft-pink editorial-minimalist portfolio built with **React 19 + TypeScript + Vite + Tailwind CSS v4**, subtle **GSAP + ScrollTrigger + Lenis** motion, and a strict **content-verification system** so nothing unverified is ever published as fact.
 
-**Read [`CONTENT_AUDIT.md`](./CONTENT_AUDIT.md) first** — it lists every conflicting résumé claim, every withheld metric, and the exact switch that publishes each one.
+**Read [`CONTENT_AUDIT.md`](./CONTENT_AUDIT.md) first** — it records every content decision, including the Nov 2026 redesign and the published internship/certificates.
 
 ---
 
@@ -15,12 +15,46 @@ npm run build      # typecheck + production build (dist/)
 npm run preview    # serve the production build
 npm run lint       # eslint
 npm run typecheck  # tsc -b
-npm run assets     # regenerate optimized images + og.png (requires `npm i -D sharp`)
+npm run assets     # regenerate the OG social image (requires `npm i -D sharp`)
 ```
 
-> The browser test harness (`scripts/browser-test.mjs`) uses `playwright-core` with the system
-> Chrome; install with `npm i -D --no-save playwright-core` and run `node scripts/browser-test.mjs`
-> while `npm run preview` is up.
+> The QA harness (`scripts/qa-palette-form.mjs`) uses `playwright-core` with the system
+> Chrome: `npm i -D --no-save playwright-core`, run `npm run preview`, then
+> `node scripts/qa-palette-form.mjs`. Formspree responses are mocked except where noted.
+
+---
+
+## Design system — Soft Pink Editorial Minimalism
+
+Single cohesive light theme (no dark-mode toggle). Tokens live in `src/styles/tokens.css`:
+
+| Token | Value | Use |
+|---|---|---|
+| `--bg` | `#FFF9F7` | off-white page background |
+| `--bg-deep` | `#F6DCE3` | baby pink bands |
+| `--surface` | `#FFFFFF` | content cards |
+| `--surface-2` | `#FBECEF` | soft blush |
+| `--brand` | `#D895A7` | dusty rose — important interactions |
+| `--coral` | `#AD647C` | deep rose — CTAs & key accents |
+| `--ink` | `#514047` | warm dark brown text |
+| `--ink-muted` | `#897B80` | secondary text |
+| `--line` | `#EAD9DF` | soft borders |
+
+Native browser cursor (the custom cursor system was removed by owner request); no moving
+marquee; static editorial skills section; one profile photograph (hero only) at
+`public/images/profile/srilakshmi-profile.jpg`.
+
+### Typography
+
+| Family | Variable source | Use |
+|---|---|---|
+| **Archivo** | `@fontsource-variable/archivo` (wght 400–900) | headings, hero name, section & project titles |
+| **DM Sans** | `@fontsource-variable/dm-sans` (wght 200–1000) | body, descriptions, buttons, navigation, UI |
+| **IBM Plex Mono** | `@fontsource/ibm-plex-mono` (static 400/500/600 — no variable exists) | section numbers, dates, metadata, technical labels |
+
+All three are self-hosted through Fontsource (no Google Fonts request at runtime), loaded once in
+`src/main.tsx`, and mapped to the shared tokens `--ff-display` / `--ff-body` / `--ff-mono` in
+`src/styles/tokens.css` with system fallback stacks.
 
 ---
 
@@ -30,57 +64,31 @@ npm run assets     # regenerate optimized images + og.png (requires `npm i -D sh
 
 | Setting | Purpose |
 |---|---|
-| `url` | Canonical domain — update after first deploy (also update `index.html`, `public/robots.txt`, `public/sitemap.xml`) |
+| `url` | Canonical domain — update after first deploy (also `index.html`, `public/robots.txt`, `public/sitemap.xml`) |
 | `availability` | The “Open to opportunities” badge text/state |
-| `contactForm.endpoint` | Paste your Formspree endpoint (see below) |
+| `contactForm.endpoint` | Live Formspree endpoint (`https://formspree.io/f/mrppvpjn`) |
 
-Profile facts (name, links, photo paths) live in `src/data/profile.ts`. The phone number is
-intentionally removed from the entire site (owner decision, Nov 2026).
+The phone number is intentionally absent from the entire site (owner decision).
 
 ---
 
-## Publishing withheld content (verification workflow)
+## Publishing gated content
 
-### 1. Résumé-reported metrics — `src/data/contentVerification.ts`
+### Metrics — `src/data/contentVerification.ts`
+Ten résumé-reported numbers (92% accuracy, 20,000 samples, r = 0.83, …) stay `unverified` and
+render nowhere. Flip `status: 'verified'` + add `methodology` to publish them as animated
+highlights / case-study results. (The four internship responsibility points were approved
+verbatim by the owner and appear in the timeline.)
 
-Ten numbers (92% accuracy, 20,000 samples, 10,000+ records, r = 0.83, …) are stored with
-`status: 'unverified'` and are **not rendered anywhere**. To publish one:
+### Experience — `src/data/experience.ts`
+Doosan Bobcat (Data Analytics Intern, Jun–Sep 2025) is published with owner-approved content.
+TVS Motors remains a draft (`publish: false`) until confirmed.
 
-1. Re-derive it from the project’s real artefacts (notebook output, test logs, dashboard).
-2. Fill in `methodology` (dataset, split, averaging method).
-3. Flip `status: 'verified'`.
-
-Verified metrics appear automatically: animated count-ups in **Highlights**, a **Results** grid in
-the project case study.
-
-### 2. Experience entries — `src/data/experience.ts`
-
-The Doosan Bobcat internship (Data Analytics Intern, Jun 2025 – Sep 2025) is **published** with
-owner-approved content (Nov 2026), including the four responsibility points and the GitHub link.
-The TVS Motors trainee entry remains a draft (`publish: false`) until confirmed; the timeline
-renders only `publish: true` entries plus education.
-
-### 3. Project links & screenshots — `src/data/projects.ts`
-
-- GitHub links exist for NEW_SRI (code platform) and Sales-Data-Analysis (verified during build).
-- The DR / Haar projects have no verified repos — add `github` only when confirmed. Note:
-  `github.com/Sri0295/lbp-cascade` is an **LBP** cascade project, deliberately not linked to the
-  Haar one.
-- Real screenshots (owner-supplied, Nov 2026) are wired in for the code-quality platform,
-  diabetic-retinopathy and haar-cascades projects (`public/images/projects/`). Sales Data
-  Analysis still uses a stylised, labelled placeholder — drop
-  `public/images/projects/sales-data-analysis.jpg` in place and add the `image` field in
-  `projects.ts` to replace it.
-
-### 4. Contact form (Formspree)
-
-The form is **live**: it POSTs (FormData + `Accept: application/json`) to the owner-supplied
-endpoint configured in `site.contactForm.endpoint` and shows a success state only on a confirmed
-`200` response. Errors surface Formspree's own reason, keep the visitor's text, and allow retry.
-Includes required-field + email validation, a 2,000-character message limit, a honeypot field,
-duplicate-submission prevention, and focus moves to the first invalid field.
-
-To change the endpoint, edit `contactForm.endpoint` in `src/data/site.ts`.
+### Certificates — `src/data/certifications.ts`
+All four credentials are backed by owner-supplied PDFs in `public/certificates/`, with issue
+dates and verification links exactly as printed on the certificates. Add a new entry (id, title,
+issuer, issueDate, credentialUrl, pdf, verified) to extend the gallery — no component changes
+needed. Cards without a PDF show no preview rather than a fabricated one.
 
 ---
 
@@ -88,17 +96,12 @@ To change the endpoint, edit `contactForm.endpoint` in `src/data/site.ts`.
 
 ```bash
 npm i -g vercel
-vercel          # preview deployment
+vercel          # preview
 vercel --prod   # production
 ```
 
-`vercel.json` pins the framework/build/output. After the first deploy:
-
-1. Update the domain in `src/data/site.ts`, `index.html` (canonical + og:url), `public/robots.txt`, `public/sitemap.xml`.
-2. Attach a custom domain in the Vercel dashboard if desired.
-3. Configure the Formspree endpoint.
-
-No environment variables, no secrets, no backend.
+After the first deploy: update the domain in `site.ts`, `index.html`, `public/robots.txt`,
+`public/sitemap.xml`; attach a custom domain if desired.
 
 ---
 
@@ -106,45 +109,47 @@ No environment variables, no secrets, no backend.
 
 | Feature | Where |
 |---|---|
-| Cinematic preloader (real asset readiness, skip button, curtain exit) | `components/preloader/Preloader.tsx` |
-| Character-by-character gradient hero reveal | `sections/Hero.tsx`, `.grad-chars` in `globals.css` |
-| Technology marquee (verified tech only, hover-pause) | `sections/TechMarquee.tsx` |
-| Verification-gated animated highlights | `sections/Highlights.tsx` + `data/highlights.ts` |
-| Career timeline with publication gating | `sections/Timeline.tsx` + `data/experience.ts` |
-| Four capability areas + **Skill Constellation** (Feature A) | `sections/Expertise.tsx`, `components/skills/SkillConstellation.tsx` |
-| Sticky stacked projects (desktop) / vertical list (mobile) | `sections/Projects.tsx` |
-| Case-study overlay + **Architecture Explorer** (Feature D) | `components/projects/CaseStudyOverlay.tsx`, `ArchitectureExplorer.tsx` — URL-hash deep links (`/#project/<slug>`) survive refresh |
-| **Recruiter Quick View** (Feature B, print-friendly) | `components/recruiter-view/RecruiterView.tsx` |
-| **Command palette** Ctrl/Cmd+K (Feature C, diacritic-insensitive) | `components/command-palette/CommandPalette.tsx` |
-| Section progress navigator (Feature G) | `components/ui/ScrollProgress.tsx` |
-| Design-grid easter egg — press **G** (Feature F) | `components/ui/GridOverlay.tsx` |
-| Magnetic buttons, contextual cursor labels | `hooks/useMagnetic.ts`, `components/cursor/CustomCursor.tsx` |
-| Two vibrant themes (Aurora ⇄ Ember) | `src/styles/tokens.css` (`[data-theme]`) |
+| Preloader (real readiness, skip button, rose curtain) | `components/preloader/Preloader.tsx` |
+| Hero — SRILAKSHMI reveal, single editorial portrait | `sections/Hero.tsx` |
+| Editorial about (no second photo) | `sections/About.tsx` |
+| Verification-gated highlight counters | `sections/Highlights.tsx` |
+| Experience timeline (published entries only) | `sections/Timeline.tsx` |
+| Static editorial expertise grid | `sections/Expertise.tsx` + `data/skills.ts` |
+| Sticky project cards + real screenshots | `sections/Projects.tsx`, `components/projects/ProjectVisual.tsx` |
+| Case studies + architecture explorer | `components/projects/CaseStudyOverlay.tsx` |
+| Certificate gallery (PDFs + verification links) | `sections/Certifications.tsx` + `data/certifications.ts` |
+| Recruiter Quick View (print-friendly) | `components/recruiter-view/RecruiterView.tsx` |
+| Command palette Ctrl/Cmd+K | `components/command-palette/CommandPalette.tsx` + `data/commands.ts` |
+| Section progress navigator | `components/ui/ScrollProgress.tsx` |
+| Formspree contact form | `sections/Contact.tsx` + `data/site.ts` |
 
-## Accessibility & resilience notes
+## Accessibility & resilience
 
-- All reveal-hidden states are applied **by GSAP at runtime** — with JavaScript off/failing, every
-  section is fully visible; `prefers-reduced-motion` skips the preloader, cursor, parallax and all
-  scroll choreography (verified by automated reduced-motion run).
+- All reveal-hidden states are applied **by GSAP at runtime** — content is fully visible without
+  JavaScript, and `prefers-reduced-motion` skips the preloader, parallax and all scroll
+  choreography.
 - Keyboard: skip link, focus-visible rings, Escape closes every overlay, palette is fully
-  arrow/enter driven, menu uses `aria-expanded`/`aria-controls`.
-- Print stylesheet force-reveals everything (Recruiter View → Print works).
-- Automated checks: zero console errors at 1920/1440/1280/768/390/360 px, zero horizontal overflow
-  at all eight spec viewports, reduced-motion run clean. Screenshots: `docs/shots/`.
+  arrow/enter driven with focus restoration, Ctrl+K never hijacks form typing.
+- Print stylesheet force-reveals everything.
+- QA (Nov 2026): zero console errors, zero horizontal overflow at
+  1920/1440/1280/1024/768/430/390/360 px, palette navigation 6/6, Enter/arrow/Escape verified,
+  résumé download verified, Formspree success/error/retry/duplicate-guard verified with mocked
+  responses plus one live confirmed submission.
 
 ## Project structure
 
 ```
 src/
-  components/   animation, cursor, navigation, preloader, projects, skills,
+  components/   animation, navigation, preloader, projects,
                 command-palette, recruiter-view, ui (buttons, count-up, icons…)
-  sections/     Hero, TechMarquee, About, Highlights, Timeline, Expertise,
-                Projects, Education, Certifications, Languages, Contact, Footer
-  data/         profile, site, projects, experience, education, certifications,
-                skills, highlights, contentVerification   ← single source of truth
-  hooks/        useReducedMotion, useMediaQuery, useMagnetic, useActiveSection
+  sections/     Hero, About, Highlights, Timeline, Expertise, Projects,
+                Education, Certifications, Contact
+  data/         profile, site, projects, experience, education,
+                certifications, skills, highlights, contentVerification, commands
+  hooks/        useReducedMotion, useMediaQuery, useActiveSection
   lib/          gsap setup, Lenis-aware scroll helper
-  styles/       tokens.css (two themes), globals.css
-scripts/        optimize-images.mjs (sharp), browser-test.mjs (playwright-core)
-public/         images (owner photo, og.png), resume PDF, favicon, robots, sitemap
+  styles/       tokens.css (single light theme), globals.css
+scripts/        optimize-images.mjs (OG image), qa-palette-form.mjs (Playwright)
+public/         images (profile photo, project screenshots, og.png),
+                certificates (4 PDFs), resume PDF, favicon, robots, sitemap
 ```

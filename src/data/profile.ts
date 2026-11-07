@@ -1,4 +1,4 @@
-/** Personal profile — sourced strictly from the two supplied résumés. */
+/** Personal profile — sourced strictly from the two supplied résumés + owner approvals. */
 export const profile = {
   firstName: 'Srilakshmi',
   lastName: 'S',
@@ -9,16 +9,13 @@ export const profile = {
   tagline:
     'Building thoughtful digital experiences through Python, software engineering, machine learning and problem-solving.',
 
-  about: [
-    'Computer Science Engineering graduate with a Python-first foundation and hands-on experience in software development, machine learning, computer vision and data analytics.',
-    'Interested in developing reliable software, solving engineering problems and continuously improving through practical implementation.',
-  ],
+  about:
+    'Computer Science Engineering graduate with a strong foundation in Python, software development, machine learning and data analytics. Interested in building reliable applications, solving engineering challenges and continuously developing practical technical skills.',
 
   photo: {
-    portrait: '/images/profile-portrait.webp',
-    square: '/images/profile-square.webp',
-    avatar: '/images/profile-avatar.webp',
-    alt: 'Photograph of Srilakshmi S',
+    /** The one and only profile photograph — displayed in the hero section. */
+    portrait: '/images/profile/srilakshmi-profile.jpg',
+    alt: 'Photograph of Srilakshmi S standing by large glass windows at dusk',
   },
 
   contact: {

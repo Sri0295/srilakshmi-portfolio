@@ -1,40 +1,37 @@
 /* ==========================================================================
-   DESIGN TOKENS — "Aurora" (default) & "Ember" (alternate vibrant theme)
-   Two distinct, colour-rich identities. No black-and-white mode by design.
+   DESIGN TOKENS — SOFT PINK EDITORIAL MINIMALISM
+   One cohesive light theme: off-white canvas, baby-pink bands, white cards,
+   dusty-rose interactions, deep-rose CTAs, warm dark-brown ink.
    ========================================================================== */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /* Surfaces */
-  --bg: #17152b;          /* Midnight Violet */
-  --bg-deep: #100e1f;
-  --surface: #201c3d;
-  --surface-2: #28204a;   /* Deep Purple */
-  --line: rgba(197, 181, 255, 0.16);
+  --bg: #fff9f7;          /* off-white page background */
+  --bg-deep: #f6dce3;     /* baby pink */
+  --surface: #ffffff;     /* content cards */
+  --surface-2: #fbecef;   /* soft blush */
+  --line: #ead9df;        /* soft rose border */
 
   /* Ink */
-  --ink: #f5f0ff;         /* Soft Ivory */
-  --ink-muted: #aba3d6;
-  --ink-faint: #7d75ab;
+  --ink: #514047;         /* warm dark brown — headings & body */
+  --ink-muted: #897b80;   /* secondary text */
+  --ink-faint: #b5a9ae;   /* metadata */
 
   /* Accents */
-  --brand: #956bff;       /* Electric Purple */
-  --brand-soft: rgba(149, 107, 255, 0.16);
-  --coral: #ff6b88;       /* Vibrant Coral */
-  --aqua: #48dccf;        /* Aqua Cyan */
-  --lime: #d7f36a;        /* Neon Lime */
-  --peach: #ffbc91;       /* Warm Peach */
-  --lavender: #c5b5ff;    /* Lavender */
-
-  /* Light section inks (About / Education surfaces) */
-  --light-surface: #c9baff;
-  --light-ink: #221c3f;
+  --brand: #d895a7;       /* dusty rose — important interactions */
+  --brand-soft: rgba(216, 149, 167, 0.16);
+  --coral: #ad647c;       /* deep rose — CTAs & key accents */
+  --aqua: #ad647c;        /* interactive accent (mapped to deep rose) */
+  --lime: #d895a7;        /* small emphasis (mapped to dusty rose) */
+  --peach: #e7bfc9;       /* blush tint */
+  --lavender: #e2c3cd;    /* soft rose tint */
 
   /* Type */
-  --ff-display: 'Space Grotesk Variable', 'Space Grotesk', 'Segoe UI', sans-serif;
-  --ff-body: 'Inter Variable', 'Inter', 'Segoe UI', sans-serif;
-  --ff-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+  --ff-display: 'Archivo Variable', 'Archivo', 'Segoe UI', sans-serif;
+  --ff-body: 'DM Sans Variable', 'DM Sans', 'Segoe UI', sans-serif;
+  --ff-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', monospace;
 
   --fs-hero: clamp(3.1rem, 9.6vw, 9.5rem);
   --fs-display: clamp(2.7rem, 7.6vw, 7.9rem);
@@ -48,35 +45,12 @@
 
   /* Layout */
   --container: 76rem;
-  --radius-card: 24px;
-  --radius-lg: 30px;
-}
+  --radius-card: 20px;
+  --radius-lg: 28px;
 
-/* ------------------------------------------------------------------ */
-/* "Ember" — warm alternative: maroon depths, coral lead, amber glow  */
-/* ------------------------------------------------------------------ */
-[data-theme='ember'] {
-  color-scheme: dark;
-  --bg: #241019;
-  --bg-deep: #180a11;
-  --surface: #371a27;
-  --surface-2: #432031;
-  --line: rgba(255, 188, 145, 0.18);
-
-  --ink: #fff3ea;
-  --ink-muted: #d0a3a6;
-  --ink-faint: #9c7884;
-
-  --brand: #ff6b88;
-  --brand-soft: rgba(255, 107, 136, 0.16);
-  --coral: #ffb35c;
-  --aqua: #ffd166;
-  --lime: #e9f76f;
-  --peach: #ffbc91;
-  --lavender: #ffafc9;
-
-  --light-surface: #ffc9d6;
-  --light-ink: #3a1220;
+  /* Soft shadows */
+  --shadow-card: 0 22px 44px -30px rgba(173, 100, 124, 0.35);
+  --shadow-lift: 0 28px 56px -30px rgba(173, 100, 124, 0.45);
 }
 
 /* --------------------------------------------------------------------------
@@ -116,20 +90,10 @@
   --radius-card: var(--radius-card);
   --radius-lg: var(--radius-lg);
 
-  --animate-marquee: marquee 42s linear infinite;
-  --animate-float-slow: floaty 9s ease-in-out infinite;
-  --animate-pulse-dot: pulseDot 2.2s ease-in-out infinite;
+  --animate-pulse-dot: pulseDot 2.4s ease-in-out infinite;
 }
 
-@keyframes marquee {
-  from { transform: translate3d(0, 0, 0); }
-  to { transform: translate3d(-50%, 0, 0); }
-}
-@keyframes floaty {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(0, -4%, 0) scale(1.05); }
-}
 @keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(215, 243, 106, 0.55); }
-  55% { box-shadow: 0 0 0 7px rgba(215, 243, 106, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(173, 100, 124, 0.4); }
+  55% { box-shadow: 0 0 0 7px rgba(173, 100, 124, 0); }
 }

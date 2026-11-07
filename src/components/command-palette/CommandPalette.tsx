@@ -85,7 +85,7 @@ export default function CommandPalette({ onDismiss, onExecute }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Command palette"
-        className="card w-full max-w-xl overflow-hidden !bg-bg-deep/95 shadow-2xl shadow-brand/20"
+        className="card w-full max-w-xl overflow-hidden !bg-surface/95 shadow-2xl shadow-brand/20"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={onKeyDown}
       >

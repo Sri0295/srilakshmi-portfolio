@@ -7,19 +7,19 @@ import { highlights, type Highlight } from '../data/highlights'
 import { metrics } from '../data/contentVerification'
 
 const ACCENT_BG: Record<Highlight['accent'], string> = {
-  brand: 'from-brand/25',
-  coral: 'from-coral/25',
-  aqua: 'from-aqua/25',
-  lime: 'from-lime/20',
-  peach: 'from-peach/25',
+  brand: 'from-brand/15',
+  coral: 'from-brand/15',
+  aqua: 'from-brand/15',
+  lime: 'from-brand/15',
+  peach: 'from-brand/15',
 }
 
 const ACCENT_TEXT: Record<Highlight['accent'], string> = {
-  brand: 'text-brand',
+  brand: 'text-coral',
   coral: 'text-coral',
-  aqua: 'text-aqua',
-  lime: 'text-lime',
-  peach: 'text-peach',
+  aqua: 'text-coral',
+  lime: 'text-coral',
+  peach: 'text-coral',
 }
 
 function HighlightCard({

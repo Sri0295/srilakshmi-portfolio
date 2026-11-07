@@ -35,7 +35,6 @@ export default function ProjectVisual({ project }: { project: Project }) {
       <figure
         ref={wrapRef as React.RefObject<HTMLElement>}
         className="relative overflow-hidden rounded-2xl border border-line bg-bg-deep/40"
-        data-cursor="Project screenshot"
       >
         <img
           src={project.image}
@@ -54,7 +53,6 @@ export default function ProjectVisual({ project }: { project: Project }) {
     <div
       aria-hidden="true"
       className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-line bg-bg-deep"
-      data-cursor="Screenshot placeholder"
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${GRADIENTS[project.accent]} opacity-[0.16]`} />
       {project.visual === 'sentinel' && <SentinelArt />}

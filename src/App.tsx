@@ -8,15 +8,12 @@ import type { CommandDefinition } from './data/commands'
 import { profile } from './data/profile'
 import { site } from './data/site'
 import Preloader from './components/preloader/Preloader'
-import CustomCursor from './components/cursor/CustomCursor'
-import Navbar, { type ThemeName } from './components/navigation/Navbar'
+import Navbar from './components/navigation/Navbar'
 import ScrollProgress from './components/ui/ScrollProgress'
-import GridOverlay from './components/ui/GridOverlay'
 import CommandPalette from './components/command-palette/CommandPalette'
 import RecruiterView from './components/recruiter-view/RecruiterView'
 import CaseStudyOverlay from './components/projects/CaseStudyOverlay'
 import Hero from './sections/Hero'
-import TechMarquee from './sections/TechMarquee'
 import About from './sections/About'
 import Highlights from './sections/Highlights'
 import Timeline from './sections/Timeline'
@@ -42,7 +39,6 @@ export default function App() {
   })
   const [showPreloader, setShowPreloader] = useState(!introDone)
 
-  const [theme, setTheme] = useState<ThemeName>('aurora')
   const [paletteOpen, setPaletteOpen] = useState(false)
   const [recruiterOpen, setRecruiterOpen] = useState(false)
   const [caseStudy, setCaseStudy] = useState<string | null>(() => {
@@ -51,11 +47,6 @@ export default function App() {
   })
 
   const active = useActiveSection([...SECTION_IDS])
-
-  /* Theme */
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-  }, [theme])
 
   /* Lenis smooth scrolling + GSAP integration */
   useEffect(() => {
@@ -203,26 +194,20 @@ export default function App() {
 
       {showPreloader && !reduced && <Preloader onComplete={handleIntroComplete} />}
 
-      <CustomCursor />
-
       <Navbar
         active={active}
-        theme={theme}
-        onToggleTheme={() => setTheme((t) => (t === 'aurora' ? 'ember' : 'aurora'))}
         onOpenPalette={() => setPaletteOpen(true)}
         onOpenRecruiter={() => setRecruiterOpen(true)}
       />
 
       <ScrollProgress active={active} />
-      <GridOverlay />
 
       <main>
         <Hero introDone={introDone} />
-        <TechMarquee />
         <About />
         <Highlights onOpenProject={openProject} />
         <Timeline onOpenProject={openProject} />
-        <Expertise onOpenProject={openProject} />
+        <Expertise />
         <Projects onOpenProject={openProject} />
         <Education />
         <Certifications />

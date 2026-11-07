@@ -3,42 +3,42 @@
     "navigation": [
       {
         "command": "Go to About",
-        "from": 12143,
+        "from": 10708,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true
       },
       {
         "command": "View Projects",
-        "from": 2579,
+        "from": 2481,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true
       },
       {
         "command": "View Experience",
-        "from": 7850,
+        "from": 6217,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true
       },
       {
         "command": "View Expertise",
-        "from": 4340,
+        "from": 4058,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true
       },
       {
         "command": "View Education",
-        "from": 5670,
+        "from": 5396,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true
       },
       {
         "command": "View Certifications",
-        "from": 11772,
+        "from": 10140,
         "sectionOffsetTop": 160,
         "paletteClosed": true,
         "pass": true

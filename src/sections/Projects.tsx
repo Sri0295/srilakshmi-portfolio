@@ -10,17 +10,17 @@ import ProjectVisual from '../components/projects/ProjectVisual'
 import { projects, type Project } from '../data/projects'
 
 const ACCENT_TEXT: Record<Project['accent'], string> = {
-  brand: 'text-brand',
+  brand: 'text-coral',
   coral: 'text-coral',
-  aqua: 'text-aqua',
-  peach: 'text-peach',
+  aqua: 'text-coral',
+  peach: 'text-coral',
 }
 
 const ACCENT_GLOW: Record<Project['accent'], string> = {
-  brand: 'from-brand/20 via-transparent',
-  coral: 'from-coral/20 via-transparent',
-  aqua: 'from-aqua/15 via-transparent',
-  peach: 'from-peach/20 via-transparent',
+  brand: 'from-brand/10 via-transparent',
+  coral: 'from-brand/10 via-transparent',
+  aqua: 'from-brand/10 via-transparent',
+  peach: 'from-brand/10 via-transparent',
 }
 
 function ProjectLinks({
@@ -38,7 +38,6 @@ function ProjectLinks({
         type="button"
         onClick={() => onOpenProject(project.slug)}
         className={`btn btn-primary ${compact ? '!px-5 !py-2.5 text-sm' : ''}`}
-        data-cursor="Open case study"
         aria-label={`Open the case study for ${project.title}`}
       >
         Case study <ArrowUpRight size={15} aria-hidden="true" />
@@ -49,7 +48,6 @@ function ProjectLinks({
           target="_blank"
           rel="noreferrer"
           className={`btn btn-ghost ${compact ? '!px-5 !py-2.5 text-sm' : ''}`}
-          data-cursor="GitHub"
           aria-label={`${project.title} source code on GitHub`}
         >
           <GithubIcon size={16} /> GitHub
@@ -61,7 +59,6 @@ function ProjectLinks({
           target="_blank"
           rel="noreferrer"
           className={`btn btn-ghost ${compact ? '!px-5 !py-2.5 text-sm' : ''}`}
-          data-cursor="Live demo"
           aria-label={`${project.title} live demo (opens in a new tab)`}
           title={project.demoNote}
         >

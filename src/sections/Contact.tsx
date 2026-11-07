@@ -94,7 +94,7 @@ export default function Contact() {
   }
 
   const fieldClass = (invalid: boolean) =>
-    `w-full rounded-xl border bg-bg/60 px-4 py-3 text-sm outline-none transition-colors placeholder:text-faint focus:border-aqua ${
+    `w-full rounded-xl border bg-surface px-4 py-3 text-sm outline-none transition-colors placeholder:text-faint focus:border-coral ${
       invalid ? 'border-coral' : 'border-line'
     }`
 
@@ -102,12 +102,8 @@ export default function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="section relative overflow-hidden bg-gradient-to-br from-bg via-surface-2 to-brand/25"
+      className="section relative overflow-hidden bg-bg-deep/50"
     >
-      <div aria-hidden="true" className="absolute inset-0 bg-blueprint opacity-60" />
-      <div aria-hidden="true" className="absolute -top-32 right-[10%] h-96 w-96 rounded-full bg-coral/25 blur-3xl" />
-      <div aria-hidden="true" className="absolute bottom-0 left-[5%] h-80 w-80 rounded-full bg-aqua/15 blur-3xl" />
-
       <div className="container-site relative grid gap-16 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
           <Reveal>
@@ -130,18 +126,17 @@ export default function Contact() {
             <a
               href={`mailto:${profile.contact.email}`}
               className="group flex w-fit items-center gap-4 text-ink"
-              data-cursor="Email"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-bg/40 text-aqua transition-colors group-hover:border-aqua">
+              <span className="grid h-11 w-11 place-items-center rounded-xl border border-line bg-surface text-coral transition-colors group-hover:border-coral">
                 <Mail size={17} aria-hidden="true" />
               </span>
               <span className="font-mono text-sm sm:text-base">{profile.contact.email}</span>
             </a>
             <div className="flex gap-3 pt-3">
-              <MagneticLink variant="ghost" href={profile.contact.linkedin} target="_blank" rel="noreferrer" cursor="LinkedIn" className="!px-4 !py-2.5 text-sm">
+              <MagneticLink variant="ghost" href={profile.contact.linkedin} target="_blank" rel="noreferrer" className="!px-4 !py-2.5 text-sm">
                 <LinkedinIcon size={16} /> LinkedIn
               </MagneticLink>
-              <MagneticLink variant="ghost" href={profile.contact.github} target="_blank" rel="noreferrer" cursor="GitHub" className="!px-4 !py-2.5 text-sm">
+              <MagneticLink variant="ghost" href={profile.contact.github} target="_blank" rel="noreferrer" className="!px-4 !py-2.5 text-sm">
                 <GithubIcon size={16} /> GitHub
               </MagneticLink>
             </div>
@@ -149,7 +144,7 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <Reveal className="card relative bg-bg/55 p-7 backdrop-blur-md md:p-9">
+        <Reveal className="card relative p-7 md:p-9">
           <form onSubmit={onSubmit} noValidate className="space-y-5">
             <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
@@ -208,7 +203,7 @@ export default function Contact() {
               </p>
             </div>
 
-            <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full disabled:opacity-60" data-cursor="Send">
+            <button type="submit" disabled={status === 'sending'} className="btn btn-primary w-full disabled:opacity-60">
               {status === 'sending' ? (
                 <>
                   <Loader2 size={16} className="animate-spin" aria-hidden="true" /> Sending…
@@ -222,7 +217,7 @@ export default function Contact() {
 
             <div id="contact-status" role="status" aria-live="polite">
               {status === 'invalid' && (
-                <p className="flex items-start gap-2 text-xs text-peach">
+                <p className="flex items-start gap-2 text-xs text-coral">
                   <AlertCircle size={14} className="mt-0.5 shrink-0" aria-hidden="true" /> {statusMessage}
                 </p>
               )}
@@ -232,7 +227,7 @@ export default function Contact() {
                 </p>
               )}
               {status === 'success' && (
-                <p className="flex items-start gap-2 text-xs text-lime">
+                <p className="flex items-start gap-2 text-xs text-coral">
                   <CheckCircle2 size={14} className="mt-0.5 shrink-0" aria-hidden="true" /> {statusMessage}
                 </p>
               )}

@@ -1,12 +1,18 @@
+/**
+ * Certifications — every entry below is backed by a real certificate PDF
+ * supplied by the owner (public/certificates/). No fabricated credentials.
+ */
 export interface Certification {
   id: string
   title: string
   issuer: string
-  /** Left null on purpose — no credential URLs/IDs were supplied. Do not fabricate. */
+  /** Issue date exactly as printed on the certificate */
+  issueDate: string | null
+  /** Official verification link printed on the certificate, if any */
   credentialUrl: string | null
-  /** Date only shown when verified by the owner. */
-  date: string | null
-  accent: 'brand' | 'coral' | 'aqua' | 'lime'
+  /** Owner-supplied certificate PDF */
+  pdf: string | null
+  verified: boolean
 }
 
 export const certifications: Certification[] = [
@@ -14,32 +20,37 @@ export const certifications: Certification[] = [
     id: 'aws-cloud-architecting',
     title: 'AWS Academy Graduate — Cloud Architecting',
     issuer: 'AWS Academy',
-    credentialUrl: null,
-    date: null,
-    accent: 'coral',
+    issueDate: 'August 2025',
+    credentialUrl: 'https://www.credly.com/go/6Ik4oWco',
+    pdf: '/certificates/aws-academy-cloud-architecting.pdf',
+    verified: true,
   },
   {
     id: 'cs50p',
     title: 'CS50P: Introduction to Programming with Python',
     issuer: 'Harvard University',
-    credentialUrl: null,
-    date: null,
-    accent: 'brand',
+    issueDate: '2024',
+    credentialUrl: 'https://cs50.harvard.edu/certificates/c2475684-2e9b-4fe2-ae64-cdf9731e8276',
+    pdf: '/certificates/cs50p-harvard.pdf',
+    verified: true,
   },
   {
     id: 'ibm-data-science',
-    title: 'Digital Badge in Data Science',
-    issuer: 'IBM SkillsBuild / Credly',
-    credentialUrl: null,
-    date: null,
-    accent: 'aqua',
+    title: 'Digital Badge in Data Science — Data Science 101 (DS0101EN)',
+    issuer: 'IBM SkillsBuild',
+    issueDate: 'June 2023',
+    credentialUrl:
+      'https://courses.skillsbuild.skillsnetwork.site/certificates/217f60590e504ea8bfcdd2c92da72a95',
+    pdf: '/certificates/ibm-data-science-101.pdf',
+    verified: true,
   },
   {
     id: 'tata-dataviz',
-    title: 'Data Visualization: Empowering Business with Effective Insights',
-    issuer: 'Tata (Forage Job Simulation)',
+    title: 'Data Visualisation: Empowering Business with Effective Insights',
+    issuer: 'Tata — Forage Job Simulation',
+    issueDate: 'December 2025',
     credentialUrl: null,
-    date: null,
-    accent: 'lime',
+    pdf: '/certificates/tata-data-visualisation-forage.pdf',
+    verified: true,
   },
 ]
