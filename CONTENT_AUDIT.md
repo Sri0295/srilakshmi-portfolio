@@ -35,16 +35,24 @@ Built from two supplied résumés:
 
 ## 2. Experience
 
-### Doosan Bobcat internship — PUBLISHED (owner-approved, Nov 2026)
+### Doosan Bobcat internship — PUBLISHED (corrected by owner, Nov 7 2026)
 
-- **Data Analytics Intern · Doosan Bobcat Pvt Ltd, Chennai · Jun 2025 – Sep 2025**
-- Four responsibility points published verbatim from the owner's approval (they include the
-  résumé-reported figures: 10,000+ records, r = 0.83, Laptop 22%, West region 28%).
-- GitHub: `https://github.com/Sri0295/Sales-Data-Analysis` (verified to exist during build).
-- "View Internship Project" opens the Sales Data Analysis case study.
-- The earlier two-version conflict (v1: Full Stack Intern / movie website vs v2: Data Analytics
-  Intern) is resolved in favour of v2 by owner decision. The movie-booking website remains
-  unpublished.
+- **Full Stack Intern · Doosan Bobcat Pvt Ltd, Chennai · Jun 2025 – Sep 2025**
+- Five owner-approved responsibility points (movie booking web application: HTML/CSS/JS,
+  interactive features, responsive design, REST API/SDLC exposure, testing & documentation).
+- Technology tags: HTML, CSS, JavaScript, REST APIs, Responsive Design.
+- GitHub + "View Internship Project" both link to
+  `https://github.com/Sri0295/movie-ticket-booking-website` (repo existence verified during the
+  build; opens in a new tab).
+- **The Nov 6 "Data Analytics Intern" version is fully superseded** — its summary,
+  responsibilities (sales records, SQL, EDA/r = 0.83, Power BI) and tech tags were removed from
+  the experience entry. The Sales Data Analysis project remains in the Projects section as a
+  standalone case study (repo verified), now explicitly described as separate from the
+  internship.
+- History of the conflict: résumé v1 said "Full Stack Intern, Jun–Jul 2025, movie booking
+  website"; résumé v2 said "Data Analytics Intern, Jun–Sep 2025, sales analytics". The owner's
+  Nov 7 correction keeps the Full Stack title + movie website but adopts the v2 duration
+  (Jun–Sep 2025).
 
 ### TVS Motors Trainee, Feb 2024 — still a draft (`publish: false`)
 

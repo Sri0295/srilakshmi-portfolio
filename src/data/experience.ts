@@ -1,8 +1,11 @@
 /**
  * EXPERIENCE — with publication gating.
  *
- * The Doosan Bobcat internship was confirmed by the owner (Nov 2026) and is
- * published with the approved title, dates and responsibility points.
+ * The Doosan Bobcat internship was corrected by the owner (Nov 2026): the
+ * confirmed entry is Full Stack Intern (movie booking web application),
+ * Jun 2025 – Sep 2025, with the movie-ticket-booking-website repository.
+ * The previously published Data Analytics description was removed entirely.
+ *
  * TVS Motors remains a draft (present in résumé v1 only) until confirmed.
  */
 
@@ -17,8 +20,8 @@ export interface ExperienceEntry {
   responsibilities?: string[]
   tech?: string[]
   github?: string
-  /** Opens the matching case-study overlay */
-  projectSlug?: string
+  /** "View Internship Project" target — opens in a new tab */
+  projectUrl?: string
   publish: boolean
   /** Draft-only note — never rendered while unpublished */
   conflictNote?: string
@@ -29,19 +32,20 @@ export const experience: ExperienceEntry[] = [
     id: 'doosan-bobcat',
     org: 'Doosan Bobcat Pvt Ltd',
     location: 'Chennai',
-    role: 'Data Analytics Intern',
+    role: 'Full Stack Intern',
     period: 'Jun 2025 – Sep 2025',
     summary:
-      'Built the sales analytics pipeline end to end — from raw record validation to an interactive Power BI dashboard used for business insights.',
+      'Built a responsive movie booking web application end to end — from interactive UI and form validation to testing, debugging and documentation.',
     responsibilities: [
-      'Wrote Python (Pandas, NumPy) scripts to clean and validate 10,000+ sales records, removing duplicates and handling missing values to improve data quality.',
-      'Developed SQL queries across sales, products, complaints, and tickets tables for faster data retrieval and KPI analysis.',
-      'Performed EDA and statistical analysis (outliers, skewness, correlation), uncovering a strong Sales–Profit relationship (r = 0.83).',
-      'Built Excel reports and a 3-page Power BI dashboard with interactive KPIs, identifying Laptop (22% of sales) and West region (28% of sales) as key contributors.',
+      'Developed a responsive movie booking web application using HTML, CSS, and JavaScript, focusing on user-friendly UI and seamless navigation.',
+      'Implemented interactive features, including login/signup functionality, booking forms, form validation, and dynamic user interactions.',
+      'Applied responsive web design techniques, CSS media queries, and frontend development best practices to ensure cross-device compatibility.',
+      'Gained foundational exposure to REST API integration, backend architecture, software development life cycle (SDLC), and deployment workflows.',
+      'Performed iterative testing, debugging, code reviews, and project documentation to improve application functionality and maintainability.',
     ],
-    tech: ['Python', 'Pandas', 'NumPy', 'SQL', 'Excel', 'Power BI'],
-    github: 'https://github.com/Sri0295/Sales-Data-Analysis',
-    projectSlug: 'sales-data-analysis',
+    tech: ['HTML', 'CSS', 'JavaScript', 'REST APIs', 'Responsive Design'],
+    github: 'https://github.com/Sri0295/movie-ticket-booking-website',
+    projectUrl: 'https://github.com/Sri0295/movie-ticket-booking-website',
     publish: true,
   },
   {

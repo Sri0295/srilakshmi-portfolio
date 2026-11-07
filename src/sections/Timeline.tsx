@@ -22,7 +22,7 @@ interface TimelineItem {
   responsibilities?: string[]
   tech?: string[]
   github?: string
-  projectSlug?: string
+  projectUrl?: string
 }
 
 const primary = education[0]
@@ -47,7 +47,7 @@ function buildItems(): TimelineItem[] {
       responsibilities: entry.responsibilities,
       tech: entry.tech,
       github: entry.github,
-      projectSlug: entry.projectSlug,
+      projectUrl: entry.projectUrl,
     })
   }
 
@@ -71,7 +71,7 @@ const DOT: Record<Accent, string> = {
 }
 
 /** Career timeline — published experience + education. */
-export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: string) => void }) {
+export default function Timeline() {
   const lineRef = useRef<HTMLDivElement>(null)
   const items = buildItems()
 
@@ -166,7 +166,7 @@ export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: str
                         </ul>
                       )}
 
-                      {(item.github || item.projectSlug) && (
+                      {(item.github || item.projectUrl) && (
                         <div className="mt-6 flex flex-wrap gap-3">
                           {item.github && (
                             <a
@@ -179,15 +179,16 @@ export default function Timeline({ onOpenProject }: { onOpenProject?: (slug: str
                               <GithubIcon size={15} /> GitHub
                             </a>
                           )}
-                          {item.projectSlug && onOpenProject && (
-                            <button
-                              type="button"
-                              onClick={() => onOpenProject(item.projectSlug!)}
+                          {item.projectUrl && (
+                            <a
+                              href={item.projectUrl}
+                              target="_blank"
+                              rel="noreferrer"
                               className="btn btn-primary !px-5 !py-2.5 text-sm"
-                              aria-label="View the internship project case study"
+                              aria-label={`View the ${item.title} project (opens the repository in a new tab)`}
                             >
                               View Internship Project <ArrowUpRight size={14} aria-hidden="true" />
-                            </button>
+                            </a>
                           )}
                         </div>
                       )}

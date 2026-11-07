@@ -307,7 +307,7 @@ export const projects: Project[] = [
     overview:
       'A complete analytics workflow on real sales data: validate and clean the records, query them relationally, explore them statistically, and communicate the findings through dashboards a business user can drive.',
     contextNote:
-      'Both résumés place this work at Doosan Bobcat, Chennai in 2025; the internship’s exact title and dates are pending the owner’s confirmation, so no affiliation is published here.',
+      'Presented as a standalone analytics case study; the confirmed Doosan Bobcat internship (Full Stack Intern) is a separate engagement listed in the Experience timeline.',
   },
 ]
 

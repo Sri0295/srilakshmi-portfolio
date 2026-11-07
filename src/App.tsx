@@ -206,7 +206,7 @@ export default function App() {
         <Hero introDone={introDone} />
         <About />
         <Highlights onOpenProject={openProject} />
-        <Timeline onOpenProject={openProject} />
+        <Timeline />
         <Expertise />
         <Projects onOpenProject={openProject} />
         <Education />
