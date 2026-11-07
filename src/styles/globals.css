@@ -1,0 +1,329 @@
+/* ==========================================================================
+   GLOBAL BASE + SHARED PRIMITIVES
+   Content is visible by default: initial hidden states are applied by GSAP
+   only when JS is running with motion enabled — never via CSS.
+   ========================================================================== */
+
+html {
+  scroll-behavior: auto; /* Lenis drives scrolling when motion is allowed */
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  transition: background-color 0.5s ease;
+}
+
+::selection {
+  background: var(--brand);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--aqua);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Slim, on-brand scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--brand), var(--coral));
+  border-radius: 8px;
+  border: 2px solid var(--bg-deep);
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout & shared primitives                                          */
+/* ------------------------------------------------------------------ */
+
+.container-site {
+  width: min(100% - 3rem, var(--container));
+  margin-inline: auto;
+}
+
+/* Stable anchors always clear the fixed navbar when natively scrolled */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 11vh, 8.5rem);
+}
+
+.section-light {
+  background: var(--light-surface);
+  color: var(--light-ink);
+  --ink: var(--light-ink);
+  --ink-muted: rgba(34, 28, 63, 0.72);
+  --ink-faint: rgba(34, 28, 63, 0.5);
+  --line: rgba(34, 28, 63, 0.16);
+  --brand: #6a3df0;
+  --brand-soft: rgba(106, 61, 240, 0.12);
+  --coral: #e64c72;
+  --aqua: #0e9488;
+  --lime: #7d9a12;
+  --peach: #d97e3f;
+  --lavender: #5b46b0;
+}
+
+/* Soft-ivory variant (Education) */
+.section-ivory {
+  background: #f5f0ff;
+  color: var(--light-ink);
+  --ink: var(--light-ink);
+  --ink-muted: rgba(34, 28, 63, 0.72);
+  --ink-faint: rgba(34, 28, 63, 0.5);
+  --line: rgba(34, 28, 63, 0.14);
+  --brand: #6a3df0;
+  --brand-soft: rgba(106, 61, 240, 0.12);
+  --coral: #e64c72;
+  --aqua: #0e9488;
+  --lime: #7d9a12;
+  --peach: #d97e3f;
+  --lavender: #5b46b0;
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--lavender) 0%,
+    var(--brand) 34%,
+    var(--coral) 68%,
+    var(--peach) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/*
+ * Per-character gradient type. The wrapper-level background-clip:text trick
+ * breaks when the animated characters form their own composited layers
+ * (transform / will-change), so each character clips its own gradient.
+ * Chars shimmer via a background-position pan (disabled for reduced motion).
+ */
+.grad-chars {
+  color: transparent;
+}
+.grad-chars .ss-char {
+  background-image: linear-gradient(
+    115deg,
+    var(--lavender) 0%,
+    var(--brand) 38%,
+    var(--coral) 72%,
+    var(--peach) 100%
+  );
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .grad-chars .ss-char {
+    animation: gradPan 7s ease-in-out infinite alternate;
+  }
+}
+@keyframes gradPan {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink-muted);
+}
+
+/* Large typographic word that fills with brand colour on hover */
+.outline-word {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink-muted);
+  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+}
+.outline-word:hover {
+  color: var(--brand);
+  -webkit-text-stroke-color: transparent;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--aqua);
+}
+.eyebrow::before {
+  content: '';
+  width: 2.4em;
+  height: 1px;
+  background: currentColor;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.36em 0.95em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.95em 1.9em;
+  border-radius: 999px;
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s ease,
+    background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.btn-primary {
+  background: linear-gradient(120deg, var(--brand), var(--coral));
+  color: #fff;
+  box-shadow: 0 10px 34px -12px var(--brand);
+}
+.btn-primary:hover {
+  box-shadow: 0 16px 44px -10px var(--coral);
+}
+.btn-ghost {
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--aqua);
+  color: var(--aqua);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+}
+
+/* Cards on the light sections read as translucent white */
+.section-light .card,
+.section-ivory .card {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Skip link (a11y) */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.7em 1.2em;
+  border-radius: 999px;
+  background: var(--aqua);
+  color: #0c1a18;
+  font-weight: 600;
+  transform: translateY(-300%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Easter-egg 12-column design grid */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  width: min(100% - 3rem, var(--container));
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.grid-overlay.on { opacity: 1; }
+.grid-overlay > span {
+  background: rgba(72, 220, 207, 0.07);
+  border-inline: 1px solid rgba(72, 220, 207, 0.22);
+}
+@media (max-width: 768px) {
+  .grid-overlay { grid-template-columns: repeat(4, 1fr); }
+  .grid-overlay > span:nth-child(n + 5) { display: none; }
+}
+
+/* Faint blueprint grid used behind hero/contact */
+.bg-blueprint {
+  background-image: linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 38%, black 25%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 38%, black 25%, transparent 78%);
+}
+
+/* Print: force all scroll-reveal content visible (e.g. Recruiter View printing) */
+@media print {
+  *,
+  *::before,
+  *::after {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .custom-cursor,
+  .grid-overlay {
+    display: none !important;
+  }
+}
+
+/* Custom cursor is desktop-only */
+@media (hover: none), (pointer: coarse) {
+  .custom-cursor { display: none !important; }
+}
+
+/* Reduced motion: neutralise CSS animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

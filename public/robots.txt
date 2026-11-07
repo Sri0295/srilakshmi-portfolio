@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update the domain after the first deployment
+Sitemap: https://srilakshmi-s-portfolio.vercel.app/sitemap.xml

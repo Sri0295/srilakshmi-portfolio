@@ -1,0 +1,135 @@
+/* ==========================================================================
+   DESIGN TOKENS — "Aurora" (default) & "Ember" (alternate vibrant theme)
+   Two distinct, colour-rich identities. No black-and-white mode by design.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --bg: #17152b;          /* Midnight Violet */
+  --bg-deep: #100e1f;
+  --surface: #201c3d;
+  --surface-2: #28204a;   /* Deep Purple */
+  --line: rgba(197, 181, 255, 0.16);
+
+  /* Ink */
+  --ink: #f5f0ff;         /* Soft Ivory */
+  --ink-muted: #aba3d6;
+  --ink-faint: #7d75ab;
+
+  /* Accents */
+  --brand: #956bff;       /* Electric Purple */
+  --brand-soft: rgba(149, 107, 255, 0.16);
+  --coral: #ff6b88;       /* Vibrant Coral */
+  --aqua: #48dccf;        /* Aqua Cyan */
+  --lime: #d7f36a;        /* Neon Lime */
+  --peach: #ffbc91;       /* Warm Peach */
+  --lavender: #c5b5ff;    /* Lavender */
+
+  /* Light section inks (About / Education surfaces) */
+  --light-surface: #c9baff;
+  --light-ink: #221c3f;
+
+  /* Type */
+  --ff-display: 'Space Grotesk Variable', 'Space Grotesk', 'Segoe UI', sans-serif;
+  --ff-body: 'Inter Variable', 'Inter', 'Segoe UI', sans-serif;
+  --ff-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(3.1rem, 9.6vw, 9.5rem);
+  --fs-display: clamp(2.7rem, 7.6vw, 7.9rem);
+  --fs-project: clamp(2.1rem, 5.6vw, 5.4rem);
+  --fs-sub: clamp(1.3rem, 2.3vw, 2rem);
+  --fs-body: clamp(1rem, 1.05vw, 1.15rem);
+  --fs-meta: 0.72rem;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout */
+  --container: 76rem;
+  --radius-card: 24px;
+  --radius-lg: 30px;
+}
+
+/* ------------------------------------------------------------------ */
+/* "Ember" — warm alternative: maroon depths, coral lead, amber glow  */
+/* ------------------------------------------------------------------ */
+[data-theme='ember'] {
+  color-scheme: dark;
+  --bg: #241019;
+  --bg-deep: #180a11;
+  --surface: #371a27;
+  --surface-2: #432031;
+  --line: rgba(255, 188, 145, 0.18);
+
+  --ink: #fff3ea;
+  --ink-muted: #d0a3a6;
+  --ink-faint: #9c7884;
+
+  --brand: #ff6b88;
+  --brand-soft: rgba(255, 107, 136, 0.16);
+  --coral: #ffb35c;
+  --aqua: #ffd166;
+  --lime: #e9f76f;
+  --peach: #ffbc91;
+  --lavender: #ffafc9;
+
+  --light-surface: #ffc9d6;
+  --light-ink: #3a1220;
+}
+
+/* --------------------------------------------------------------------------
+   Tailwind theme bridge — exposes tokens as utilities
+   (text-brand, bg-surface, font-display, text-hero, max-w-site, ease-expo…)
+   -------------------------------------------------------------------------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-faint: var(--ink-faint);
+  --color-brand: var(--brand);
+  --color-coral: var(--coral);
+  --color-aqua: var(--aqua);
+  --color-lime: var(--lime);
+  --color-peach: var(--peach);
+  --color-lavender: var(--lavender);
+
+  --font-display: var(--ff-display);
+  --font-body: var(--ff-body);
+  --font-mono: var(--ff-mono);
+
+  --text-hero: var(--fs-hero);
+  --text-display: var(--fs-display);
+  --text-project: var(--fs-project);
+  --text-sub: var(--fs-sub);
+  --text-body: var(--fs-body);
+  --text-meta: var(--fs-meta);
+
+  --ease-expo: var(--ease-out-expo);
+
+  --container-site: var(--container);
+  --radius-card: var(--radius-card);
+  --radius-lg: var(--radius-lg);
+
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-float-slow: floaty 9s ease-in-out infinite;
+  --animate-pulse-dot: pulseDot 2.2s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -4%, 0) scale(1.05); }
+}
+@keyframes pulseDot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(215, 243, 106, 0.55); }
+  55% { box-shadow: 0 0 0 7px rgba(215, 243, 106, 0); }
+}

@@ -1,0 +1,59 @@
+{
+  "pages": [
+    {
+      "name": "desktop-1920",
+      "width": 1920,
+      "height": 1080,
+      "errors": []
+    },
+    {
+      "name": "desktop-1440",
+      "width": 1440,
+      "height": 900,
+      "errors": []
+    },
+    {
+      "name": "laptop-1280",
+      "width": 1280,
+      "height": 800,
+      "errors": []
+    },
+    {
+      "name": "tablet-768",
+      "width": 768,
+      "height": 1024,
+      "errors": []
+    },
+    {
+      "name": "mobile-390",
+      "width": 390,
+      "height": 844,
+      "errors": []
+    },
+    {
+      "name": "mobile-360",
+      "width": 360,
+      "height": 740,
+      "errors": []
+    },
+    {
+      "name": "reduced-motion-1440",
+      "width": 1440,
+      "height": 900,
+      "reducedMotion": "reduce",
+      "errors": []
+    }
+  ],
+  "interactions": {
+    "caseStudyButtonTopmost": "NO (DIV)",
+    "caseStudyOpenedByClick": false,
+    "caseStudyOpenedByHash": true,
+    "caseStudyHash": "#project/code-quality-platform",
+    "caseStudyAfterNext": "#project/diabetic-retinopathy",
+    "caseStudyClosed": true,
+    "constellationPanel": "DATA · SQL\n\nAPPLIED IN:\nSales Data Analysis\nopens the case study",
+    "contactFormMessage": "The contact service has not been connected yet, so this message cannot be sent. Please use email or LinkedIn instead — the site owner can enable the form in one line of configuration (see README).",
+    "deepLinkOverlayOpen": true,
+    "consoleErrors": []
+  }
+}

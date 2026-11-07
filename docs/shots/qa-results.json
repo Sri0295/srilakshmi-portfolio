@@ -1,0 +1,143 @@
+{
+  "palette": {
+    "navigation": [
+      {
+        "command": "Go to About",
+        "from": 12143,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      },
+      {
+        "command": "View Projects",
+        "from": 2579,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      },
+      {
+        "command": "View Experience",
+        "from": 7850,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      },
+      {
+        "command": "View Expertise",
+        "from": 4340,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      },
+      {
+        "command": "View Education",
+        "from": 5670,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      },
+      {
+        "command": "View Certifications",
+        "from": 11772,
+        "sectionOffsetTop": 160,
+        "paletteClosed": true,
+        "pass": true
+      }
+    ],
+    "consoleErrors": [],
+    "enterSelect": {
+      "filteredTo": 1,
+      "educationReached": true,
+      "closedAfterEnter": true
+    },
+    "arrows": {
+      "first": "Go to AboutNavigate",
+      "afterDown": "View ExperienceNavigate",
+      "afterUp": "View ProjectsNavigate"
+    },
+    "escape": {
+      "closed": true,
+      "focusRestored": true
+    },
+    "ctrlKGuard": true,
+    "search": [
+      {
+        "query": "project",
+        "ok": true
+      },
+      {
+        "query": "resume",
+        "ok": true
+      },
+      {
+        "query": "education",
+        "ok": true
+      },
+      {
+        "query": "experience",
+        "ok": true
+      },
+      {
+        "query": "zzzqqq",
+        "ok": true
+      }
+    ],
+    "download": {
+      "filename": "Srilakshmi-S-Resume.pdf"
+    },
+    "recruiter": true,
+    "caseStudy": {
+      "open": true,
+      "hash": "#project/code-quality-platform"
+    }
+  },
+  "form": {
+    "requiredValidation": {
+      "message": "Please fill in your name, a valid email address and a message.",
+      "focusOnName": true,
+      "nameBorder": true
+    },
+    "emailValidation": {
+      "focusOnEmail": true,
+      "ariaInvalid": "true"
+    },
+    "success": {
+      "message": "Thank you! Your message has been sent successfully. I'll get back to you soon.",
+      "nameCleared": true
+    },
+    "serverError": {
+      "message": "The message could not be sent (monthly submission limit reached). Please try again or use email directly.",
+      "preserved": true
+    },
+    "networkFail": {
+      "message": "Network problem — the message was not sent. Please check your connection and try again.",
+      "preserved": true
+    },
+    "duplicate": {
+      "during": {
+        "buttonDisabled": true,
+        "sendingLabel": true
+      },
+      "totalRequests": 4
+    },
+    "messageLimit": {
+      "maxLengthAttribute": 2000
+    },
+    "consoleErrors": [],
+    "notes": [
+      "total mocked Formspree requests: 4 (no real submissions in this block)"
+    ]
+  },
+  "responsive": {
+    "overflow": {
+      "360": true,
+      "390": true,
+      "430": true,
+      "768": true,
+      "1024": true,
+      "1440": true,
+      "1920": true
+    }
+  },
+  "notes": []
+}

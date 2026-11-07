@@ -1,0 +1,55 @@
+{
+  "grepNoPhone": true,
+  "domNoPhone": true,
+  "noLanguagesSection": true,
+  "internship": {
+    "role": true,
+    "org": true,
+    "dates": true,
+    "year": true,
+    "r083": true,
+    "noPlaceholder": true,
+    "respCount": 4
+  },
+  "internshipGithubHref": "https://github.com/Sri0295/Sales-Data-Analysis",
+  "internshipOpensSales": true,
+  "django": {
+    "expertise": true,
+    "ticker": true
+  },
+  "djangoConstellation": "WEB · DJANGO\n\nSUPPORTING SKILL ACROSS THE STACK",
+  "djangoRecruiter": true,
+  "featuredImage": {
+    "present": true,
+    "loaded": 0,
+    "badge": true
+  },
+  "salesStillPlaceholder": false,
+  "otherImages": [
+    {
+      "s": "diabetic-retinopathy",
+      "loaded": 0
+    },
+    {
+      "s": "haar-cascades",
+      "loaded": 0
+    }
+  ],
+  "education": {
+    "text": "B.E. Computer Science Engineering",
+    "visibleAtPoint": true,
+    "color": "rgb(34, 28, 63)",
+    "opacity": "1"
+  },
+  "sectionCount": "07 / 9",
+  "overflow": {
+    "360": true,
+    "390": true,
+    "430": true,
+    "768": true,
+    "1024": true,
+    "1280": true,
+    "1440": true,
+    "1920": true
+  }
+}
